@@ -32,6 +32,10 @@ spotify_controller = SpotifyController()
 def spotify_current():
     return spotify_controller.current_track()
 
+@app.get("/spotify/profile")
+def spotify_profile():
+    return spotify_controller.user_profile()
+
 @app.get("/health")
 def health():
     return {"status": "ok"}

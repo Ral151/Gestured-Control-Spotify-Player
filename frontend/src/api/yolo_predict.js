@@ -9,6 +9,11 @@ export const fetchHealth = async () => {
   return res.data;
 };
 
+export const fetchProfile = async () => {
+  const res = await api.get("/spotify/profile")
+  return res.data
+}
+
 export const fetchGesture = async () => {
   const res = await api.get("/gesture");
   return res.data;

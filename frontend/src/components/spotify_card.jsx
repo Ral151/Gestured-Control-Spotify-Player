@@ -1,6 +1,6 @@
 export default function SpotifyCard({ spotify }) {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
+    <section className="rounded-2xl row-span-2 col-span-2 border w-full border-white/10 bg-white/5 p-6 shadow-lg">
       <h2 className="mb-4 text-xl font-semibold">Now Playing</h2>
 
       {spotify ? (
@@ -9,7 +9,7 @@ export default function SpotifyCard({ spotify }) {
             <img
               src={spotify.album_image}
               alt={spotify.album_name || "Album cover"}
-              className="h-64 w-full rounded-xl object-cover"
+              className="h-full w-full rounded-xl object-cover"
             />
           ) : (
             <div className="flex h-64 w-full items-center justify-center rounded-xl bg-zinc-900 text-zinc-500">

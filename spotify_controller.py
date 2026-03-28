@@ -11,7 +11,7 @@ class spotify_control:
             client_id=os.getenv("SPOTIFY_CLIENT_ID"),
             client_secret=os.getenv("SPOTIFY_CLIENT_SECRET"),
             redirect_uri=os.getenv("SPOTIFY_REDIRECT_URI"),
-            scope="user-modify-playback-state user-read-playback-state user-read-currently-playing streaming user-read-email user-read-private user-library-read user-library-modify",
+            scope="user-modify-playback-state user-read-playback-state user-read-currently-playing streaming user-read-email user-read-private user-library-read user-library-modify user-read-recently-played user-top-read",
             open_browser=True
         ))
 
@@ -90,4 +90,19 @@ class spotify_control:
             "artist": ", ".join(artist["name"] for artist in item.get("artists", [])),
             "album_name": item["album"].get("name"),
             "album_image": images[0]["url"] if images else None,
+        }
+    
+    def user_profile(self):
+        profile = self.sp.current_user()
+        user_recently_played = self.sp.current_user_recently_played(limit=4)
+        user_top_artist = self.sp.current_user_top_artists(limit=3)
+
+        played_items = user_recently_played.get("items", [])
+        top_artist = user_top_artist.get("items", [])
+
+        return {
+            "user": profile,
+            "recently_played": played_items,
+            "top_artists": top_artist,
+            "profile_image": profile.get("images", [])
         }

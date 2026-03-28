@@ -9,7 +9,7 @@ const commands = [
 
 export default function CommandGuide() {
   return (
-    <section className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
+    <section className="rounded-2xl border col-span-1 border-white/10 bg-white/5 p-6 shadow-lg">
       <h2 className="mb-4 text-xl font-semibold">Gesture Guide</h2>
 
       <div className="space-y-3">
