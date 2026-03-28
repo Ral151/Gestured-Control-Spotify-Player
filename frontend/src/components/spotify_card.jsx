@@ -1,0 +1,37 @@
+export default function SpotifyCard({ spotify }) {
+  return (
+    <section className="rounded-2xl border border-white/10 bg-white/5 p-6 shadow-lg">
+      <h2 className="mb-4 text-xl font-semibold">Now Playing</h2>
+
+      {spotify ? (
+        <div className="space-y-4">
+          {spotify.album_image ? (
+            <img
+              src={spotify.album_image}
+              alt={spotify.album_name || "Album cover"}
+              className="h-64 w-full rounded-xl object-cover"
+            />
+          ) : (
+            <div className="flex h-64 w-full items-center justify-center rounded-xl bg-zinc-900 text-zinc-500">
+              No Album Art
+            </div>
+          )}
+
+          <div>
+            <p className="text-lg font-bold">{spotify.track_name || "No track"}</p>
+            <p className="text-sm text-zinc-400">{spotify.artist || "Unknown artist"}</p>
+            <p className="mt-1 text-xs text-zinc-500">{spotify.album_name || ""}</p>
+          </div>
+
+          <div className="rounded-lg bg-zinc-900 px-3 py-2 text-sm">
+            {spotify.is_playing ? "Playing" : "Paused"}
+          </div>
+        </div>
+      ) : (
+        <div className="rounded-xl bg-zinc-900 p-4 text-zinc-400">
+          Spotify data unavailable
+        </div>
+      )}
+    </section>
+  );
+}
