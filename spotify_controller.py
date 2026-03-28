@@ -69,3 +69,25 @@ class spotify_control:
                 print("Volume is min")
         else:
             print("No active Spotify device")
+    
+    def current_track(self):
+        playback = self.sp.current_playback()
+        if not playback or not playback.get("item"):
+            return {
+                "is_playing": False,
+                "track_name": None,
+                "artist": None,
+                "album_name": None,
+                "album_image": None,
+            }
+
+        item = playback["item"]
+        images = item["album"]["images"]
+
+        return {
+            "is_playing": playback.get("is_playing", False),
+            "track_name": item.get("name"),
+            "artist": ", ".join(artist["name"] for artist in item.get("artists", [])),
+            "album_name": item["album"].get("name"),
+            "album_image": images[0]["url"] if images else None,
+        }
