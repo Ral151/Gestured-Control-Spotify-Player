@@ -21,15 +21,15 @@ class Camera:
         try:
             if gesture == "palm":
                 self.spotify_controller.play_pause()
-            elif gesture == "call":
-                self.spotify_controller.next_track()
-            elif gesture == "gun":
-                self.spotify_controller.previous_track()
             elif gesture == "like":
+                self.spotify_controller.next_track()
+            elif gesture == "dislike":
+                self.spotify_controller.previous_track()
+            elif gesture == "four":
                 self.spotify_controller.liked_song()
             elif gesture == "one":
                 self.spotify_controller.volume_up()
-            elif gesture == "two":
+            elif gesture == "peace":
                 self.spotify_controller.volume_down()
         except Exception as error:
             print(f"Gesture action failed: {error}")
