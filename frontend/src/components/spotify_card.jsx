@@ -18,13 +18,16 @@ export default function SpotifyCard({ spotify }) {
           )}
 
           <div>
-            <p className="text-lg font-bold">{spotify.track_name || "No track"}</p>
-            <p className="text-sm text-zinc-400">{spotify.artist || "Unknown artist"}</p>
-            <p className="mt-1 text-xs text-zinc-500">{spotify.album_name || ""}</p>
+            <p className="text-2xl font-bold">{spotify.track_name || "No track"}</p>
+            <p className="text-lg text-zinc-400">{spotify.artist || "Unknown artist"}</p>
+            <p className="mt-1 text-lg text-zinc-500">{spotify.album_name || ""}</p>
           </div>
 
-          <div className="rounded-lg bg-zinc-900 px-3 py-2 text-sm">
+          <div className="rounded-lg bg-zinc-900 px-3 flex justify-between py-2 text-sm">
             {spotify.is_playing ? "Playing" : "Paused"}
+            {spotify.volume_percent !== null && (
+              <span className="ml-4 text-zinc-400">Volume: {spotify.volume_percent}%</span>
+            )}
           </div>
         </div>
       ) : (

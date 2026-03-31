@@ -79,10 +79,12 @@ class spotify_control:
                 "artist": None,
                 "album_name": None,
                 "album_image": None,
+                "volume_percent": None
             }
 
         item = playback["item"]
         images = item["album"]["images"]
+        volume = playback["device"]["volume_percent"]
 
         return {
             "is_playing": playback.get("is_playing", False),
@@ -90,6 +92,7 @@ class spotify_control:
             "artist": ", ".join(artist["name"] for artist in item.get("artists", [])),
             "album_name": item["album"].get("name"),
             "album_image": images[0]["url"] if images else None,
+            "volume_percent": volume if volume else None,
         }
     
     def user_profile(self):
