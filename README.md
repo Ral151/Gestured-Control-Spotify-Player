@@ -26,7 +26,9 @@ conda env create -f environment.yml
 conda activate Gesture-Spotify
 ```
 
-4. Create a `.env` file in the project root with your Spotify app credentials:
+4. Get your credential in this link https://developer.spotify.com/dashboard using your spotify account.
+
+5. Create a `.env` file in the project root with your Spotify app credentials:
 
 ```env
 SPOTIFY_CLIENT_ID="your_client_id"
@@ -34,7 +36,7 @@ SPOTIFY_CLIENT_SECRET="your_client_secret"
 SPOTIFY_REDIRECT_URI="http://127.0.0.1:8888/callback"
 ```
 
-5. Start the backend API
+6. Start the backend API
 
 ```bash
 python -m uvicorn main:app --reload
