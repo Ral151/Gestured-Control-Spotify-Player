@@ -63,3 +63,7 @@ Frontend runs at `http://localhost:5173`.
 - Confirm backend is running on `127.0.0.1:8000`.
 - Confirm frontend is running on `localhost:5173`.
 - Check CORS in `main.py` if frontend URL differs.
+
+## Important Drawback of Current Development
+
+Currently, the UI will call the API over and over again to get user's current playback, its volume, favorite playlists, etc which causes Spotify's API limit rate to be easily exceeded. To prevent this, it's better to just activate the backend directly without accessing the UI since it's made just to see the behavior of the YOLO Detector. 
